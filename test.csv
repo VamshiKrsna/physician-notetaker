@@ -1,0 +1,31 @@
+text,label
+I am experiencing mild pain and would like some advice.,Neutral|Seeking reassurance
+I'm really worried about my condition and I need someone to reassure me.,Anxious|Seeking reassurance
+I'm very reassured by the treatment I'm receiving.,Reassured|Acknowledging treatment
+"I am reassured overall, though I had some concerns earlier.",Reassured|Expressing concern
+I'm moderately concerned about my symptoms.,Neutral|Expressing concern
+I have a few questions regarding my recovery; please provide more info.,Reassured|Requesting information
+I am following my treatment and reporting my status.,Neutral|Acknowledging treatment
+I cannot shake off this anxiety about my health.,Anxious|Expressing concern
+I would like some information regarding my symptoms.,Neutral|Requesting information
+I'm asking for more details about what might be causing my discomfort.,Neutral|Requesting information
+My treatment has been effective and I'm feeling reassured.,Reassured|Acknowledging treatment
+I have some discomfort and would like a bit of reassurance.,Neutral|Seeking reassurance
+My pain is unbearable and I'm anxious about it.,Anxious|Reporting symptoms
+I am following my treatment and reporting my status.,Neutral|Acknowledging treatment
+I have a few questions regarding my recovery; please provide more info.,Reassured|Requesting information
+I have minimal symptoms and am reporting my status.,Reassured|Reporting symptoms
+My treatment has been effective and I'm feeling reassured.,Reassured|Acknowledging treatment
+I'm extremely concerned because my symptoms are getting worse.,Anxious|Reporting symptoms
+My pain is unbearable and I'm anxious about it.,Anxious|Reporting symptoms
+My treatment has been effective and I'm feeling reassured.,Reassured|Acknowledging treatment
+I'm asking for more details about what might be causing my discomfort.,Neutral|Requesting information
+My treatment is ongoing and I'm providing an update on my condition.,Neutral|Acknowledging treatment
+I cannot shake off this anxiety about my health.,Anxious|Expressing concern
+My treatment is ongoing and I'm providing an update on my condition.,Neutral|Acknowledging treatment
+I am experiencing mild pain and would like some advice.,Neutral|Seeking reassurance
+"I am reassured overall, though I had some concerns earlier.",Reassured|Expressing concern
+"I'm feeling mostly reassured, but I would like confirmation.",Reassured|Seeking reassurance
+"I'm mostly reassured, but I need more information about my progress.",Reassured|Requesting information
+I'm moderately concerned about my symptoms.,Neutral|Expressing concern
+I would like some information regarding my symptoms.,Neutral|Requesting information
