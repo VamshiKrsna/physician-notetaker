@@ -38,7 +38,11 @@ Sentiment & Intent Analysis -> <a href= "https://github.com/VamshiKrsna/physicia
 
 
 
-Sentiment and Intent Analyzer Generated outputs like : <a href= "https://github.com/VamshiKrsna/physician-notetaker/blob/main/sentiment_analysis.json"> medical_summary.json </a>
+Sentiment and Intent Analyzer Generated outputs like : <a href= "https://github.com/VamshiKrsna/physician-notetaker/blob/main/sentiment_analysis.json"> sentiment_analysis.json </a>
+
+
+
+<a href= "https://github.com/VamshiKrsna/physician-notetaker/blob/main/sentiment_analysis2.json"> sentiment_analysis2.json </a>
 
 
 
@@ -53,7 +57,7 @@ Find SOAP Note Generation <a href= "https://github.com/VamshiKrsna/physician-not
 
 
 
-SOAP Note Generator powered by GEMINI Generated outputs like : <a href= "https://github.com/VamshiKrsna/physician-notetaker/blob/main/soap_summary.json"> medical_summary.json </a>
+SOAP Note Generator powered by GEMINI Generated outputs like : <a href= "https://github.com/VamshiKrsna/physician-notetaker/blob/main/soap_summary.json"> soap_summary.json </a>
 
 
 
