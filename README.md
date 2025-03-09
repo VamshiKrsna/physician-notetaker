@@ -65,50 +65,50 @@ SOAP Note Generator powered by GEMINI Generated outputs like : <a href= "https:/
 - How would you handle **ambiguous or missing medical data** in the transcript?
 
 
-    By Logical Inferencing/ Rule based mapping, for example, if a car accident is mentioned, we have possible injuries like whiplash injury, neck strain, etc. 
-    To ensure better accuracy, I'd employ Human reviews and extend the entities manually as the usecase/ application grows.  
+    **By Logical Inferencing/ Rule based mapping, for example, if a car accident is mentioned, we have possible injuries like whiplash injury, neck strain, etc. 
+    To ensure better accuracy, I'd employ Human reviews and extend the entities manually as the usecase/ application grows.**
 
   
 - What **pre-trained NLP models** would you use for medical summarization?
 
 
-    I have used SciSpacy here and I have found several Bio Clinical variations of NLP Models already pretrained on medical datasets on huggingface, I'd move forward with the ones that fit best for my task/usecase like Bio_ClinicalBERT, etc.
+    **I have used SciSpacy here and I have found several Bio Clinical variations of NLP Models already pretrained on medical datasets on huggingface, I'd move forward with the ones that fit best for my task/usecase like Bio_ClinicalBERT, etc.**
 
 
 
 - How would you fine-tune **BERT** for medical sentiment detection?
 
 
-  Prepare Medical/ Clinical Variations of BERT or other NLP Models like Clinical/ Bio_ClinicalBERT,
+  **Prepare Medical/ Clinical Variations of BERT or other NLP Models like Clinical/ Bio_ClinicalBERT,**
 
 
-  Prepare a labeled dataset with labels Anxious, Neutral, Reassured and Intents as well
+  **Prepare a labeled dataset with labels Anxious, Neutral, Reassured and Intents as well**
 
 
-  Create a Trainer, train it and evaluate it using a portion of train data (test data)
+  **Create a Trainer, train it and evaluate it using a portion of train data (test data)**
 
   
 
 - What datasets would you use for training a **healthcare-specific** sentiment model?
 
 
-MIMIC III, IV or MedNLI datasets are healthcare specific datasets I would use for finetuning/ training.
+    **MIMIC III, IV or MedNLI datasets are healthcare specific datasets I would use for finetuning/ training**
 
 
 
 - How would you train an NLP model to **map medical transcripts into SOAP format**?
 
 
-Prepare a large training and testing datasets with predefined examples of our required schema (SOAP Format)
+    **Prepare a large training and testing datasets with predefined examples of our required schema (SOAP Format)**
 
 
-Choose a model like BERT and train it on our training dataset.
+    **Choose a model like BERT and train it on our training dataset.**
 
 
-Evaluate it based on metrics like ROUGE.
+    **Evaluate it based on metrics like ROUGE.**
 
 
 - What **rule-based or deep-learning** techniques would improve the accuracy of SOAP note generation?
 
 
-Entity Recognition, Entity Mapping to corresponding sections of SOAP are the techniques that can potentially improve accuracy of SOAP.
+    **Entity Recognition, Entity Mapping to corresponding sections of SOAP are the techniques that can potentially improve accuracy of SOAP.**
