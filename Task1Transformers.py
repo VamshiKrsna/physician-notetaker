@@ -1,118 +1,64 @@
-from transformers import pipeline, AutoTokenizer, AutoModelForTokenClassification, AutoModelForSequenceClassification
+# Using Gemini Generative AI, lets solve Task 1
 import json
-from typing import Dict, List, Set
+import os
+from google.generativeai import GenerativeModel, configure
+from typing import Dict, Any
+from dotenv import load_dotenv
 
-class MedicalNLPTransformer:
-    def __init__(self):
-        # Initialize NER pipeline with medical NER model
-        self.ner_model_name = "samrawal/bert-base-uncased_clinical-ner"
-        self.ner = pipeline("ner", model=self.ner_model_name, aggregation_strategy="simple")
+load_dotenv() # Loads google api key from .env file
+
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+
+configure(api_key=GEMINI_API_KEY) # Configuring gemini models with our api key
+
+model = GenerativeModel("gemini-1.5-pro") # using gemini 1.5 pro model
+
+prompt_template = """
+        You are a specialized medical AI assistant trained to extract structured medical information from physician-patient conversations.
+
+        Analyze the following physician-patient conversation transcript carefully, and extract the following information in JSON format:
         
-        # Initialize zero-shot classification for improved entity categorization
-        self.classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
+        1. Patient_Name: The patient's name or "Unknown" if not mentioned.
+        2. Symptoms: List all symptoms mentioned by the patient.
+        3. Diagnosis: Any diagnoses mentioned in the conversation.
+        4. Treatment: All treatments, medications, or procedures mentioned or recommended.
+        5. Current_Status: The patient's current health status as described in the conversation.
+        6. Prognosis: Any mentioned expected outcomes, recovery timelines, or future outlooks.
         
-        # Medical term categories
-        self.categories = {
-            "symptoms": ["pain", "discomfort", "ache", "stiffness", "anxiety", "difficulty"],
-            "treatments": ["physiotherapy", "medication", "therapy", "examination"],
-            "diagnoses": ["whiplash", "injury", "trauma", "condition"],
-            "body_parts": ["neck", "back", "head", "spine", "muscles"]
-        }
-    
-    def _classify_entity(self, entity: str) -> str:
-        # Classify the entity into one of our medical categories
-        candidate_labels = list(self.categories.keys())
-        result = self.classifier(entity, candidate_labels)
-        return result['labels'][0] if result['scores'][0] > 0.5 else "other"
-    
-    def _extract_patient_name(self, text: str) -> str:
-        # Use NER to find person names
-        entities = self.ner(text)
-        for entity in entities:
-            if entity['entity_group'] == 'B-NAME' and ('Ms.' in text or 'Mr.' in text):
-                return entity['word']
-        return "Unknown"
-    
-    def _extract_medical_entities(self, text: str) -> Dict[str, Set[str]]:
-        # Extract entities using transformer NER
-        entities = self.ner(text)
+        IMPORTANT INSTRUCTIONS:
+        - Be comprehensive and exact when extracting information.
+        - Include only information explicitly mentioned in the transcript.
+        - If information for a category is not mentioned, use ["Not mentioned in conversation"] for that field.
+        - Return ONLY valid JSON with no additional text, explanations, or preamble.
+        - Ensure your response is parseable by Python's json.loads() function.
         
-        # Initialize categories
-        medical_entities = {
-            "symptoms": set(),
-            "treatments": set(),
-            "diagnoses": set(),
-            "body_parts": set()
-        }
+        Here's the physician-patient conversation transcript:
         
-        # Categorize entities
-        for entity in entities:
-            if entity['score'] > 0.5:  # Confidence threshold
-                category = self._classify_entity(entity['word'])
-                if category in medical_entities:
-                    medical_entities[category].add(entity['word'].lower())
-        
-        return medical_entities
-    
-    def _extract_status_and_prognosis(self, text: str) -> tuple:
-        # Use zero-shot classification for better context understanding
-        sentences = text.split('.')
-        current_status = ""
-        prognosis = ""
-        
-        status_labels = ["current condition", "present state"]
-        prognosis_labels = ["future outlook", "recovery expectation"]
-        
-        for sentence in sentences:
-            if sentence.strip():
-                # Classify for current status
-                status_result = self.classifier(sentence, status_labels)
-                if status_result['scores'][0] > 0.6:
-                    current_status = sentence.strip()
+        {conversation}
+        """
+
+# Function to process convo : 
+def process_convo(conversation):
+    prompt = prompt_template.format(conversation=conversation)
+    response = model.generate_content(prompt)
+            
+    # extract and parse the JSON response
+    json_text = response.text
+            
+    # cleaning the response (sometimes models may add markdown code blocks)
+    if "```json" in json_text:
+        json_text = json_text.split("```json")[1].split("```")[0].strip()
+    elif "```" in json_text:
+        json_text = json_text.split("```")[1].split("```")[0].strip()
                 
-                # Classify for prognosis
-                prognosis_result = self.classifier(sentence, prognosis_labels)
-                if prognosis_result['scores'][0] > 0.6:
-                    prognosis = sentence.strip()
+    # Parse JSON
+    result = json.loads(json_text)
+            
+    return result
         
-        return current_status, prognosis
-    
-    def analyze_conversation(self, text: str) -> Dict:
-        # Extract medical entities
-        medical_entities = self._extract_medical_entities(text)
-        
-        # Extract current status and prognosis
-        current_status, prognosis = self._extract_status_and_prognosis(text)
-        
-        # Create structured output
-        medical_summary = {
-            "Patient_Name": self._extract_patient_name(text),
-            "Symptoms": list(medical_entities["symptoms"]),
-            "Diagnosis": list(medical_entities["diagnoses"]),
-            "Treatment": list(medical_entities["treatments"]),
-            "Current_Status": current_status,
-            "Prognosis": prognosis
-        }
-        
-        return medical_summary
-
-def main():
-    # Initialize the transformer-based medical NLP pipeline
-    medical_nlp = MedicalNLPTransformer()
-    
-    # Read the conversation from file
-    with open("cleaned_convo.txt", "r") as f:
-        conversation = f.read()
-    
-    # Analyze the conversation
-    summary = medical_nlp.analyze_conversation(conversation)
-    
-    # Print formatted JSON output
-    print(json.dumps(summary, indent=2))
-    
-    # Save to file
-    with open("medical_summary_transformer.json", "w") as f:
-        json.dump(summary, f, indent=2)
-
 if __name__ == "__main__":
-    main()
+    with open("cleaned_convo.txt","r") as f:
+        convo = f.read()
+
+    result = process_convo(convo)
+    print(json.dumps(result,indent=2))
