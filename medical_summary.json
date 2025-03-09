@@ -1,26 +1,26 @@
 {
   "Patient_Name": "Unknown",
   "Symptoms": [
-    "difficulty",
     "pain",
-    "back pain",
     "trouble sleeping",
-    "stiffness",
+    "back pain",
+    "difficulty",
     "anxiety",
-    "discomfort"
+    "discomfort",
+    "stiffness"
   ],
   "Diagnosis": [
-    "condition",
     "damage",
     "whiplash",
     "injury",
-    "whiplash injury"
+    "whiplash injury",
+    "condition"
   ],
   "Treatment": [
-    "medical attention",
     "examination",
-    "physiotherapy",
-    "painkillers"
+    "medical attention",
+    "painkillers",
+    "physiotherapy"
   ],
   "Current_Status": "Physician: That makes sense. Are you still experiencing pain now?\n \n ",
   "Prognosis": "But at this point, youre on track for a full recovery.\n \n Patient: Thank you, doctor. I appreciate it.\n \n Physician: Youre very welcome, Ms. Jones. Take care, and dont hesitate to reach out if you need anything."

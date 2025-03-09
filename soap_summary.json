@@ -1,0 +1,18 @@
+{
+  "Subjective": {
+    "Chief_Complaint": "Neck and back pain following a motor vehicle accident (MVA)",
+    "History_of_Present_Illness": "Patient reports neck and back pain for four weeks duration following a MVA.  Pain has improved with ten physiotherapy sessions.  Currently reports occasional back pain."
+  },
+  "Objective": {
+    "Physical_Exam": "Not documented in provided transcript.  Physical exam required to assess range of motion, tenderness, and neurological status.",
+    "Observations": "Patient reports improvement in symptoms with physiotherapy."
+  },
+  "Assessment": {
+    "Diagnosis": "Likely Cervical and Lumbar Strain/Sprain.  Differential diagnoses include disc herniation, facet joint injury, or other MVA related injuries. Further evaluation required.",
+    "Severity": "Initially severe, currently mild based on patient report.  Objective assessment required for accurate severity determination."
+  },
+  "Plan": {
+    "Treatment": "Continue current physiotherapy regimen.  Consider further imaging (X-ray, MRI) if pain persists or worsens.  Possible referral to orthopedics or pain management if indicated.  Patient education regarding proper posture and body mechanics.",
+    "Follow-Up": "Schedule follow-up appointment in 2-4 weeks to reassess symptoms and response to treatment."
+  }
+}
