@@ -1,0 +1,14 @@
+{
+  "Patient_Name": "Unknown",
+  "Symptoms": [
+    "pain",
+    "back pain"
+  ],
+  "Diagnosis": [],
+  "Treatment": [
+    "treatment",
+    "physiotherapy"
+  ],
+  "Current_Status": "\n    Doctor: How are you feeling today?\n    Patient: I had a car accident. My neck and back hurt a lot for four weeks.\n    Doctor: Did you receive treatment?\n    Patient: Yes, I had ten physiotherapy sessions, and now I only have occasional back pain.\n    ",
+  "Prognosis": ""
+}
