@@ -62,3 +62,7 @@ if __name__ == "__main__":
 
     result = process_convo(convo)
     print(json.dumps(result,indent=2))
+    
+    # Save the summary to transformer_summary.json
+    with open("transformer_summary.json", "w") as f:
+        json.dump(result, f, indent=2)
