@@ -31,7 +31,11 @@ This one obviously performs the best as it is using a SOTA Model.
 ### 2 . Sentiment Analysis
 
 
-**Approach :**  In this task, I tried to finetune an instance of BERT, but found it inefficient, so I found a pretrained model called Bio_ClinicalBERT on huggingface, which was pretrained and finetuned on MMIC and other medical datasets. This one worked well for me, hence went forward with this one. It performed well in sentiment and intent analysis.
+**Approach :**  In this task, I tried to finetune an instance of BERT, but found it inefficient, so I found a pretrained model called Bio_ClinicalBERT on huggingface, which was pretrained and finetuned on MMIC and other medical datasets. This one worked well for me, hence went forward with this one. It performed well in sentiment and intent analysis
+
+
+
+I generated train and test.csv but couldn't finetune a model (encountered a lot of errors in training phase, hence didn't add the script here).
 
 
 Sentiment & Intent Analysis -> <a href= "https://github.com/VamshiKrsna/physician-notetaker/blob/main/Task2SentimentAnalysis.py"> Task2SentimentAnalysis </a>
